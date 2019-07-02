@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="50dp"
+    android:orientation="vertical"
+    tools:context=".activity.SetAlarmActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancel_text"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/padding10"
+            android:textSize="@dimen/fontsize20"
+            android:gravity="center"
+            android:text="取消" />
+
+        <TextView
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_weight="3"
+            android:textSize="@dimen/fontsize25"
+            android:text="编辑闹钟" />
+
+        <TextView
+            android:id="@+id/sure_text"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:textSize="@dimen/fontsize20"
+            android:text="完成" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/padding10"
+        android:layout_weight="6"
+        android:orientation="vertical">
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:timePickerMode="spinner"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:theme="@style/Theme.picker"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:showDividers="middle"
+        android:divider="@color/dark_blue"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding10"
+                android:text="重复"
+                android:textSize="@dimen/fontsize20" />
+            <TextView
+                android:id="@+id/day_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingLeft="@dimen/padding10"
+                android:textSize="@dimen/fontsize13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingLeft="@dimen/padding10"
+            android:paddingRight="@dimen/padding10"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/Mon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="一" />
+
+            <CheckBox
+                android:id="@+id/Tue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="二" />
+
+            <CheckBox
+                android:id="@+id/Wed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="三" />
+
+            <CheckBox
+                android:id="@+id/Thu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="四" />
+
+            <CheckBox
+                android:id="@+id/Fri"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="五" />
+
+            <CheckBox
+                android:id="@+id/Sat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="六" />
+
+            <CheckBox
+                android:id="@+id/Sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="日" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/remindway_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/padding10"
+                android:textSize="@dimen/fontsize20"
+                android:text="提醒方式"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/ring_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding10"
+                android:textSize="@dimen/fontsize20"
+                android:text="铃声"/>
+
+            <TextView
+               android:id="@+id/ringname_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="@dimen/padding10"
+                android:text="铃声名"
+                android:textSize="@dimen/fontsize20" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

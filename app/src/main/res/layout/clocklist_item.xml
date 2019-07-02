@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/clock_ringtime"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding15"
+            android:textSize="@dimen/fontsize30"
+            android:text="00:38" />
+
+        <Switch
+            android:id="@+id/clock_statebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/padding15"
+            android:gravity="center"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+</LinearLayout>
