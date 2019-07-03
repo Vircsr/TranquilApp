@@ -5,17 +5,34 @@ public class Clock {
     private int minute;
     private String ringname;
     private String remindway;
+    private int ring;
+    private int intervaltime;
     private boolean[] workday={false,false,false,false,false,false,false};
+    private String intervaltext;
 
-    public Clock(int hour, int minute, String ringname, String remindway, boolean[] workday){
+    public  Clock(int hour,int minute,String ringname,String remindway,boolean[] workday,int ring,int intervaltime){
         this.hour=hour;
         this.minute=minute;
         this.ringname=ringname;
         this.remindway=remindway;
         this.workday=workday;
+        this.ring=ring;
+        this.intervaltime=intervaltime;
     }
     public Clock() {
         ;
+    }
+    public void setIntervaltext(String intervaltext){
+        this.intervaltext =intervaltext;
+    }
+    public String getIntervaltext(){
+        return this.intervaltext;
+    }
+    public void setIntervaltime(int intervaltime){
+        this.intervaltime=intervaltime;
+    }
+    public int getIntervaltime(){
+        return this.intervaltime;
     }
     public void setTime(int hour,int minute) {
         this.hour = hour;
@@ -28,6 +45,12 @@ public class Clock {
     public int getMinute(){return this.minute;}
     public void setRingname(String ringname) {
         this.ringname = ringname;
+    }
+    public int getRing(){
+        return this.ring;
+    }
+    public void setRing(int ring){
+        this.ring=ring;
     }
     public String getRingname(){
         return ringname;

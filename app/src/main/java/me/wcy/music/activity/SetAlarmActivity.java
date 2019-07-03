@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -16,32 +18,39 @@ import java.util.Calendar;
 
 import me.wcy.music.R;
 import me.wcy.music.model.Clock;
-public class SetAlarmActivity extends BaseActivity implements View.OnClickListener{
-private int hour;
-private int minute;
-public  TextView cancel;
-public  TextView sure;
-public  TextView day;
-public  TextView ring;
-public  TextView remindway;
-public  TextView ringname;
-public CheckBox Mon;
-public CheckBox Tue;
-public CheckBox Wed;
-public CheckBox Thu;
-public CheckBox Fri;
-public CheckBox Sat;
-public CheckBox Sun;
-public TimePicker timePicker;
-public String clockJson;
-//当前clock对象
-public Clock clocknow;
-//用于显示的读取来的clock对象
-public Clock clockregister=new Clock();
-public Calendar c;
-public boolean[] workday={false,false,false,false,false,false,false};
-Intent intent=getIntent();
-String clockid;
+public class SetAlarmActivity extends BaseActivity implements View.OnClickListener,RadioGroup.OnCheckedChangeListener{
+    private int hour;
+    private int minute;
+    public  TextView cancel;
+    public  TextView sure;
+    public  TextView day;
+    public  TextView ring;
+    public  TextView ringname;
+    public  TextView intervaltext;
+    public CheckBox Mon;
+    public CheckBox Tue;
+    public CheckBox Wed;
+    public CheckBox Thu;
+    public CheckBox Fri;
+    public CheckBox Sat;
+    public CheckBox Sun;
+    public TimePicker timePicker;
+    public String clockJson;
+    public RadioGroup radioGroup;
+    public RadioButton radioButton0;
+    public RadioButton radioButton1;
+    public RadioButton radioButton2;
+    public RadioButton radioButton3;
+    //当前clock对象
+    public Clock clocknow;
+    public Calendar c;
+    public int intervaltime=0;
+    public int ringnumber;
+    public boolean[] workday={false,false,false,false,false,false,false};
+    public String[]rings={"默认铃声","电话铃声","新闻联播","雪之梦","皮卡丘","叮铃铃","SJLT","八音盒","月宝宝","Kalimbell"};
+    public String str;
+    public String str_interval;
+    String clockid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,29 +58,31 @@ String clockid;
         timePicker=(TimePicker) findViewById(R.id.timePicker);
         timePicker.setIs24HourView(true);
         init();//实例化按钮
-
         //获取闹钟
         if(getclock(clockid)==null){
             clocknow=new Clock();
+            str=rings[0];
+            ringnumber=1;
         }else{
             clocknow=getclock(clockid);
             hour=clocknow.getHour();
             minute=clocknow.getMinute();
+            str=clocknow.getRingname();
+            ringnumber=clocknow.getRing();
         }
         clockDisplay(clocknow);
 
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                    SetAlarmActivity.this.hour=hourOfDay;
-                    SetAlarmActivity.this.minute=minute;
-                    clocknow.setTime(SetAlarmActivity.this.hour,SetAlarmActivity.this.minute);
+                SetAlarmActivity.this.hour=hourOfDay;
+                SetAlarmActivity.this.minute=minute;
+                clocknow.setTime(SetAlarmActivity.this.hour,SetAlarmActivity.this.minute);
             }
         });
     }
     public void init(){
         clockid=getIntent().getStringExtra("itemid");
-        //Toast.makeText(getApplicationContext(), "item"+clockid, Toast.LENGTH_LONG).show();
         c=Calendar.getInstance();
         cancel= (TextView) findViewById(R.id.cancel_text);
         cancel.setOnClickListener(this);
@@ -82,8 +93,6 @@ String clockid;
         ring.setOnClickListener(this);
         ringname=(TextView) findViewById(R.id.ringname_text);
         ringname.setOnClickListener(this);
-        remindway=(TextView) findViewById(R.id.remindway_text);
-        remindway.setOnClickListener(this);
         Mon=(CheckBox) findViewById(R.id.Mon);
         Mon.setOnClickListener(this);
         Tue=(CheckBox) findViewById(R.id.Tue);
@@ -98,9 +107,42 @@ String clockid;
         Sat.setOnClickListener(this);
         Sun=(CheckBox) findViewById(R.id.Sun);
         Sun.setOnClickListener(this);
-
+        intervaltext=(TextView)  findViewById(R.id.intervaltext);
+        radioGroup=(RadioGroup)findViewById(R.id.radiogroup);
+        radioGroup.setOnCheckedChangeListener(this);
+        radioButton0=radioGroup.findViewById(R.id.radioButton0);
+        radioButton1=radioGroup.findViewById(R.id.radioButton1);
+        radioButton2=radioGroup.findViewById(R.id.radioButton2);
+        radioButton3=radioGroup.findViewById(R.id.radioButton3);
 
     }
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {// Q: 参数 group 暂时还没搞清什么用途
+        switch (checkedId) {
+            case R.id.radioButton0:
+                intervaltime=0;
+                str_interval="只响一次";
+                intervaltext.setText(str_interval);
+                break;
+            case R.id.radioButton1:
+                intervaltime=5;
+                str_interval="每五分钟响一次";
+                intervaltext.setText(str_interval);
+                break;
+            case R.id.radioButton2:
+                intervaltime=10;
+                str_interval="每十分钟响一次";
+                intervaltext.setText(str_interval);
+                break;
+            case R.id.radioButton3:
+                intervaltime=15;
+                str_interval="每十五分钟响一次";
+                intervaltext.setText(str_interval);
+                break;
+        }
+
+    }
+
     @Override
     public void onClick( View view){
         switch (view.getId()){
@@ -120,9 +162,6 @@ String clockid;
                 break;
             case R.id.ringname_text:
                 startActivity(new Intent(SetAlarmActivity.this, RingActivity.class));
-                break;
-            case R.id.remindway_text:
-                startActivity(new Intent(SetAlarmActivity.this, RemindWayActivity.class));
                 break;
         }
 
@@ -159,16 +198,17 @@ String clockid;
     private void saveclock(String i){   //保存闹钟当前设置内容
         String key="KEY_CLOCK_"+i;
         clocknow.setTime(hour,minute);
-        clocknow.setRingname("铃声名");
-        clocknow.setRemindway("callme");
+        clocknow.setRingname(str);
+        clocknow.setRing(ringnumber);
         clocknow.setWorkday(workday);
+        clocknow.setIntervaltime(intervaltime);
+        clocknow.setIntervaltext(str_interval);
         clocknow.setWorkday(Mon.isChecked(),Tue.isChecked(),Wed.isChecked(),Thu.isChecked(),Fri.isChecked(),Sat.isChecked(),Sun.isChecked());
         SharedPreferences sp = getSharedPreferences("SP_CLOCK",MODE_PRIVATE);//创建sp对象,如果有key为"SP_PEOPLE"的sp就取出，否则就创建一个此key的sp对象
         Gson gson=new Gson();
         String jsonStr=gson.toJson(clocknow);
         SharedPreferences.Editor edit=sp.edit();
         edit.putString(key, jsonStr) ;
-        //Toast.makeText(getApplicationContext(),jsonStr,Toast.LENGTH_LONG).show();
         edit.commit();
     }
     private Clock getclock(String i){  //获取json内容，并转换为class对象
@@ -181,9 +221,7 @@ String clockid;
         if(clockJson!="")  //防空判断
         {
             Gson gson = new Gson();
-           // Toast.makeText(getApplicationContext(),clockJson,Toast.LENGTH_LONG).show();
             clock = gson.fromJson(clockJson, Clock.class);
-            //Toast.makeText(getApplicationContext(),i+"##########"+clock.getTime(),Toast.LENGTH_LONG).show();//将json字符串转换成 people对象
         }
 
         return clock;
@@ -192,8 +230,25 @@ String clockid;
 
         timePicker.setCurrentHour(clockitem.getHour());
         timePicker.setCurrentMinute(clockitem.getMinute());
-        remindway.setText(clockitem.getRemindway());
         ringname.setText(clockitem.getRingname());
+        //intervaltext.setText(clockitem.getIntervaltext());
+        switch (clockitem.getIntervaltime())
+        {
+            case 0:
+                radioButton0.setChecked(true);
+                break;
+            case 5:
+                radioButton1.setChecked(true);
+                break;
+            case 10:
+                radioButton2.setChecked(true);
+                break;
+            case 15:
+                radioButton3.setChecked(true);
+                break;
+            default:
+                break;
+        }
         boolean workday[]=clockitem.getWorkday();
         Mon.setChecked(workday[0]);
         Tue.setChecked(workday[1]);
@@ -203,6 +258,16 @@ String clockid;
         Sat.setChecked(workday[5]);
         Sun.setChecked(workday[6]);
         getday();
+
+    }
+    public void onRestart() {
+        super.onRestart();
+        SharedPreferences sp = getSharedPreferences("SP_RING",MODE_PRIVATE);                     //创建sp对象,如果有key为"SP_PEOPLE"的sp就取出
+        String ringvalue = sp.getString("NUM","");
+        ringnumber=Integer.valueOf(ringvalue);
+        //Toast.makeText(getBaseContext(),"num"+ringnumber,Toast.LENGTH_LONG).show();
+        str=rings[ringnumber];
+        ringname.setText(str);
 
     }
 

@@ -1,46 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
     android:layout_marginBottom="50dp"
     android:orientation="vertical"
     tools:context=".activity.SetAlarmActivity">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
-            android:id="@+id/cancel_text"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:paddingLeft="@dimen/padding10"
-            android:textSize="@dimen/fontsize20"
-            android:gravity="center"
-            android:text="取消" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:visibility="gone"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-        <TextView
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_weight="3"
-            android:textSize="@dimen/fontsize25"
-            android:text="编辑闹钟" />
-
-        <TextView
-            android:id="@+id/sure_text"
-            android:layout_height="match_parent"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textSize="@dimen/fontsize20"
-            android:text="完成" />
-    </LinearLayout>
+        <include layout="@layout/include_alarm_bar" />
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,6 +42,8 @@
             android:theme="@style/Theme.picker"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
+
+    <TextView style="@style/horizontal_line_style"/>
 
 
     <LinearLayout
@@ -79,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/padding10"
-                android:text="重复"
+                android:text="工作日"
                 android:textSize="@dimen/fontsize20" />
             <TextView
                 android:id="@+id/day_text"
@@ -89,6 +74,7 @@
                 android:paddingLeft="@dimen/padding10"
                 android:textSize="@dimen/fontsize13" />
         </LinearLayout>
+        <TextView style="@style/horizontal_line_style"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -147,21 +133,9 @@
 
 
         </LinearLayout>
+        <TextView style="@style/horizontal_line_style"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
 
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/remindway_text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center|left"
-                android:paddingLeft="@dimen/padding10"
-                android:textSize="@dimen/fontsize20"
-                android:text="提醒方式"/>
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,7 +152,7 @@
                 android:text="铃声"/>
 
             <TextView
-               android:id="@+id/ringname_text"
+                android:id="@+id/ringname_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center|right"
@@ -187,6 +161,71 @@
                 android:textSize="@dimen/fontsize20" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/padding10"
+                android:text="闹钟间隔"
+                android:textSize="@dimen/fontsize20" />
+            <TextView
+                android:id="@+id/intervaltext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:paddingRight="@dimen/padding10"
+                android:textSize="@dimen/fontsize20"
+                android:text="只响一次"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:checked="true"
+                    android:id="@+id/radioButton0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="无" />
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="5min" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10min" />
+
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="15min" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+        <TextView style="@style/horizontal_line_style"/>
     </LinearLayout>
 
 </LinearLayout>

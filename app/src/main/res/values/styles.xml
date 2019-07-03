@@ -39,4 +39,9 @@
     </style>
 
     <style name="AppTheme.Text" parent="TextAppearance.AppCompat" />
+    <style name="horizontal_line_style">
+        <item name="android:background">@color/line_and_outline_grey</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.4dp</item>
+    </style>
 </resources>

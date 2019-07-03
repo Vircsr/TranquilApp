@@ -27,22 +27,14 @@ import me.wcy.music.activity.SetAlarmActivity;
 import me.wcy.music.adapter.ClockListAdapter;
 import me.wcy.music.utils.binding.Bind;
 
-public class ClockFragment extends BaseFragment implements View.OnClickListener, AdapterView.OnItemClickListener{
+public class ClockFragment extends BaseFragment {
 
-    @Bind(R.id.clockadd)
-    public ImageView clockadd;
     @Bind(R.id.clock_List)
     public ListView clockListView;
-    private Context mcontext;
-    private OnFragmentInteractionListener mListener;
     private int number=0;
     private int hour;
     private int minute;
-    private ClockListAdapter adapter;
     Switch itemswitch;
-//    public ClockFragment() {
-//        // Required empty public constructor
-//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -55,10 +47,8 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
 
         View view = inflater.inflate(R.layout.fragment_clock, container, false);
 //        ViewUtils.inject(this);
-        clockadd = view.findViewById(R.id.clockadd);
         clockListView = view.findViewById(R.id.clock_List);
-        adapter = new ClockListAdapter(AppCache.get().getmClockList());
-        clockListView.setAdapter(adapter);
+        clockListView.setAdapter(new ClockListAdapter(getActivity(), loadClockList()));
         clockListView.setOnItemClickListener((parent, view1, position, id) -> {
 
             View itemview=clockListView.getChildAt(position-clockListView.getFirstVisiblePosition());
@@ -71,7 +61,6 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
             startActivity(intent);
 
         });
-        clockadd.setOnClickListener((View.OnClickListener) this);
         return view;
     }
 
@@ -83,15 +72,6 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.clockadd:// 新建界面
-                startActivity(new Intent(getActivity(), SetAlarmActivity.class));
-                break;
-        }
-    }
-
 
     public Clock addClock(int hour, int minute){        //闹钟界面添加闹钟
        Clock clock = new Clock();
@@ -99,25 +79,14 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
         return clock;
     }
 
+
     public ArrayList<Clock> loadClockList() {
         ArrayList<Clock> clockArrayList = new ArrayList<>();
-        // String key="KEY_CLOCK_"+0;
         clockArrayList.add(addClock(0,0));
         clockArrayList.add(addClock(0,0));
         clockArrayList.add(addClock(0,0));
         clockArrayList.add(addClock(0,0));
         clockArrayList.add(addClock(0,0));
-        /*SharedPreferences sp = getContext().getSharedPreferences("SP_CLOCK",MODE_PRIVATE);                     //创建sp对象,如果有key为"SP_PEOPLE"的sp就取出
-        String clockJson = sp.getString(key,"");
-        if(clockJson!="")  //防空判断
-        {
-            Gson gson = new Gson();
-            Clock clock=new Clock();
-            // Toast.makeText(getApplicationContext(),clockJson,Toast.LENGTH_LONG).show();
-            clock = gson.fromJson(clockJson, Clock.class);
-            Toast.makeText(getContext(),0+"fragment"+clock.getTime(),Toast.LENGTH_LONG).show();//将json字符串转换成 people对象            clockArrayList.add(clock);xiaozhiqiang
-        }*/
-
         return clockArrayList;
     }
 
@@ -127,18 +96,10 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
         clockListView.setAdapter(new ClockListAdapter(getActivity(), loadClockList()));
 
     }
-
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Clock clock = AppCache.get().getmClockList().get(position);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState); // Always call the superclass first
     }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
     @Override
     public void onSaveInstanceState(Bundle outState) {
 //        int position = clockListView.getFirstVisiblePosition();
