@@ -5,28 +5,22 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.List;
 
-import javax.security.auth.callback.Callback;
-
 import me.wcy.music.R;
-import me.wcy.music.activity.CallAlarm;
+import me.wcy.music.receiver.CallAlarm;
 import me.wcy.music.model.Clock;
-import me.wcy.music.utils.binding.Bind;
-import me.wcy.music.utils.binding.ViewBinder;
 
 import static android.content.Context.ALARM_SERVICE;
 import static android.content.Context.MODE_PRIVATE;

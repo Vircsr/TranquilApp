@@ -9,4 +9,6 @@ public interface Keys {
     String LOCAL_MUSIC_OFFSET = "local_music_offset";
     String PLAYLIST_POSITION = "playlist_position";
     String PLAYLIST_OFFSET = "playlist_offset";
+    String ALARM_POSITION = "alarm_position";
+    String ALARM_OFFSET = "alarm_offset";
 }

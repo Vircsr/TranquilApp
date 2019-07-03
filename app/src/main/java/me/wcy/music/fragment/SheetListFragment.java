@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.hwangjr.rxbus.RxBus;
+
 import java.util.List;
 
 import me.wcy.music.R;
@@ -38,6 +40,7 @@ public class SheetListFragment extends BaseFragment implements AdapterView.OnIte
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         mSongLists = AppCache.get().getSheetList();
         if (mSongLists.isEmpty()) {

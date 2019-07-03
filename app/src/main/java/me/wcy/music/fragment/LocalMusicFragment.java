@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hwangjr.rxbus.RxBus;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 
@@ -41,6 +42,8 @@ import me.wcy.music.utils.PermissionReq;
 import me.wcy.music.utils.ToastUtils;
 import me.wcy.music.utils.binding.Bind;
 
+import static me.wcy.music.constants.Keys.LOCAL_MUSIC_POSITION;
+
 /**
  * 本地音乐列表
  *
@@ -58,12 +61,14 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.fragment_local_music, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         adapter = new PlaylistAdapter(AppCache.get().getLocalMusicList());
         adapter.setOnMoreClickListener(this);
@@ -139,37 +144,6 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
         dialog.show();
     }
 
-
-
-
-//    /**
-//     * 设置铃声
-//     */
-//    private void setRingtone(Music music) {
-//        Uri uri = MediaStore.Audio.Media.getContentUriForPath(music.getPath());
-//        // 查询音乐文件在媒体库是否存在
-//        Cursor cursor = getContext().getContentResolver()
-//                .query(uri, null, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() }, null);
-//        if (cursor == null) {
-//            return;
-//        }
-//        if (cursor.moveToFirst() && cursor.getCount() > 0) {
-//            String _id = cursor.getString(0);
-//            ContentValues values = new ContentValues();
-//            values.put(MediaStore.Audio.Media.IS_MUSIC, true);
-//            values.put(MediaStore.Audio.Media.IS_RINGTONE, true);
-//            values.put(MediaStore.Audio.Media.IS_ALARM, false);
-//            values.put(MediaStore.Audio.Media.IS_NOTIFICATION, false);
-//            values.put(MediaStore.Audio.Media.IS_PODCAST, false);
-//
-//            getContext().getContentResolver()
-//                    .update(uri, values, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() });
-//            Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
-//            RingtoneManager.setActualDefaultRingtoneUri(getContext(), RingtoneManager.TYPE_RINGTONE, newUri);
-//        }
-//        cursor.close();
-//    }
-
     private void deleteMusic(final Music music) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         String title = music.getTitle();
@@ -202,15 +176,44 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
     public void onSaveInstanceState(Bundle outState) {
         int position = lvLocalMusic.getFirstVisiblePosition();
         int offset = (lvLocalMusic.getChildAt(0) == null) ? 0 : lvLocalMusic.getChildAt(0).getTop();
-        outState.putInt(Keys.LOCAL_MUSIC_POSITION, position);
+        outState.putInt(LOCAL_MUSIC_POSITION, position);
         outState.putInt(Keys.LOCAL_MUSIC_OFFSET, offset);
     }
 
     public void onRestoreInstanceState(final Bundle savedInstanceState) {
         lvLocalMusic.post(() -> {
-            int position = savedInstanceState.getInt(Keys.LOCAL_MUSIC_POSITION);
+            int position = savedInstanceState.getInt(LOCAL_MUSIC_POSITION);
             int offset = savedInstanceState.getInt(Keys.LOCAL_MUSIC_OFFSET);
             lvLocalMusic.setSelectionFromTop(position, offset);
         });
     }
+
+
+    //    /**
+//     * 设置铃声
+//     */
+//    private void setRingtone(Music music) {
+//        Uri uri = MediaStore.Audio.Media.getContentUriForPath(music.getPath());
+//        // 查询音乐文件在媒体库是否存在
+//        Cursor cursor = getContext().getContentResolver()
+//                .query(uri, null, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() }, null);
+//        if (cursor == null) {
+//            return;
+//        }
+//        if (cursor.moveToFirst() && cursor.getCount() > 0) {
+//            String _id = cursor.getString(0);
+//            ContentValues values = new ContentValues();
+//            values.put(MediaStore.Audio.Media.IS_MUSIC, true);
+//            values.put(MediaStore.Audio.Media.IS_RINGTONE, true);
+//            values.put(MediaStore.Audio.Media.IS_ALARM, false);
+//            values.put(MediaStore.Audio.Media.IS_NOTIFICATION, false);
+//            values.put(MediaStore.Audio.Media.IS_PODCAST, false);
+//
+//            getContext().getContentResolver()
+//                    .update(uri, values, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() });
+//            Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
+//            RingtoneManager.setActualDefaultRingtoneUri(getContext(), RingtoneManager.TYPE_RINGTONE, newUri);
+//        }
+//        cursor.close();
+//    }
 }

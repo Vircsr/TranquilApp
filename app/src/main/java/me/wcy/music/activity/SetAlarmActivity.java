@@ -1,5 +1,6 @@
 package me.wcy.music.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import java.util.Calendar;
 
 import me.wcy.music.R;
 import me.wcy.music.model.Clock;
-public class SetAlarmActivity extends AppCompatActivity implements View.OnClickListener{
+public class SetAlarmActivity extends BaseActivity implements View.OnClickListener{
 private int hour;
 private int minute;
 public  TextView cancel;

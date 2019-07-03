@@ -20,6 +20,8 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.hwangjr.rxbus.RxBus;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,6 +99,7 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
 
         initSystemBar();
         initViewPager();

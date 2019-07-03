@@ -1,10 +1,12 @@
-package me.wcy.music.activity;
+package me.wcy.music.receiver;
 
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import me.wcy.music.activity.AlarmAlert;
 
 public class CallAlarm extends BroadcastReceiver
 {

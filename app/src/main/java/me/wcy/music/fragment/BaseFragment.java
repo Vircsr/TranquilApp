@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 
 import com.hwangjr.rxbus.RxBus;
 
+import me.wcy.music.constants.RxBusTags;
 import me.wcy.music.utils.PermissionReq;
 import me.wcy.music.utils.binding.ViewBinder;
 
@@ -18,13 +19,18 @@ import me.wcy.music.utils.binding.ViewBinder;
  */
 public abstract class BaseFragment extends Fragment {
     protected Handler handler;
-
+    protected boolean isRegister = false;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         handler = new Handler(Looper.getMainLooper());
         ViewBinder.bind(this, getView());
-        //RxBus.get().register(this);
+        if(isRegister == false){
+            RxBus.get().register(this);
+            isRegister = !isRegister;
+        }
+
+
     }
 
     @Override

@@ -15,7 +15,10 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.hwangjr.rxbus.RxBus;
+
 import me.wcy.music.application.AppCache;
+import me.wcy.music.constants.Keys;
 import me.wcy.music.model.Clock;
 import java.util.ArrayList;
 
@@ -44,10 +47,12 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_clock, container, false);
 //        ViewUtils.inject(this);
         clockadd = view.findViewById(R.id.clockadd);
@@ -136,10 +141,17 @@ public class ClockFragment extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
+//        int position = clockListView.getFirstVisiblePosition();
+//        int offset = (clockListView.getChildAt(0) == null) ? 0 : clockListView.getChildAt(0).getTop();
+//        outState.putInt(Keys.ALARM_POSITION, position);
+//        outState.putInt(Keys.ALARM_OFFSET, offset);
     }
 
     public void onRestoreInstanceState(final Bundle savedInstanceState) {
-
+//        clockListView.post(() -> {
+//            int position = savedInstanceState.getInt(Keys.ALARM_POSITION);
+//            int offset = savedInstanceState.getInt(Keys.ALARM_OFFSET);
+//            clockListView.setSelectionFromTop(position, offset);
+//        });
     }
 }

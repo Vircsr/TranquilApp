@@ -59,9 +59,8 @@
             android:name=".activity.MusicActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -84,10 +83,15 @@
             android:name=".activity.PlaylistActivity"
             android:label="@string/activity_playlist"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.WelcomeActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".activity.SetAlarmActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AlarmAlert"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.RemindWayActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
