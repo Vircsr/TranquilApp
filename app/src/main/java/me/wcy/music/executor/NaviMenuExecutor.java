@@ -67,7 +67,9 @@ public class NaviMenuExecutor {
 
     private void sleepModel(){
         QuitTimer.get().start(30*60*1000);
-        nightMode();
+        if(!Preferences.isNightMode()){
+            nightMode();
+        }
         ToastUtils.show("睡眠模式开启");
     }
 }
