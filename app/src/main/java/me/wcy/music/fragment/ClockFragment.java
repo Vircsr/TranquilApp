@@ -1,32 +1,21 @@
 package me.wcy.music.fragment;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.hwangjr.rxbus.RxBus;
-
-import me.wcy.music.application.AppCache;
-import me.wcy.music.constants.Keys;
 import me.wcy.music.model.Clock;
 import java.util.ArrayList;
 
 import me.wcy.music.R;
-import me.wcy.music.activity.SetAlarmActivity;
 import me.wcy.music.adapter.ClockListAdapter;
 import me.wcy.music.utils.binding.Bind;
 
