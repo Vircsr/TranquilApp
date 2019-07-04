@@ -2,29 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/half_transparent_black"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/white_24p"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="@color/white"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        >
 
+        <TextView style="@style/horizontal_line_style"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
             android:gravity="center"
+            android:layout_weight="1.1"
             android:text="铃声"
             android:textColor="@color/black_33"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
 
         <TextView style="@style/horizontal_line_style"/>
 
@@ -32,9 +30,9 @@
             android:id="@+id/ring_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="电话铃声"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -45,9 +43,9 @@
             android:id="@+id/ring_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="新闻联播"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -58,9 +56,9 @@
             android:id="@+id/ring_3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="雪之梦"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -71,9 +69,9 @@
             android:id="@+id/ring_4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="皮卡丘"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -84,9 +82,9 @@
             android:id="@+id/ring_5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="叮铃铃"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -97,9 +95,9 @@
             android:id="@+id/ring_6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="SJLT"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -110,9 +108,9 @@
             android:id="@+id/ring_7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="八音盒"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -121,9 +119,9 @@
             android:id="@+id/ring_8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="月宝宝"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
@@ -132,30 +130,26 @@
             android:id="@+id/ring_9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
-            android:drawableRight="@null"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:paddingLeft="@dimen/padding10"
             android:text="Kalimbell"
             android:textColor="@color/black_33"
             android:textSize="16sp"/>
 
         <TextView style="@style/horizontal_line_style"/>
 
-        <TextView
+        <Button
             android:id="@+id/ring_sure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:layout_marginTop="14dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:drawableRight="@null"
-            android:text="确定"
             android:textColor="@color/black_33"
-            android:textSize="18sp"/>
-
-        <TextView
-            style="@style/horizontal_line_style"
-            android:layout_marginBottom="10dp"/>
+            android:background="@color/white"
+            android:text="确定"
+            android:textSize="18sp"
+            android:layout_marginBottom="0dp"/>
     </LinearLayout>
 
 </RelativeLayout>

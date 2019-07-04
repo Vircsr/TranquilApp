@@ -273,9 +273,11 @@ public class SetAlarmActivity extends BaseActivity implements View.OnClickListen
         ringname.setText(str);
 
     }
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
 
 }
