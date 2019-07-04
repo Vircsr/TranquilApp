@@ -57,8 +57,13 @@ public class NaviMenuExecutor {
                 .show();
     }
     private void startTimer(int minute) {
-        QuitTimer.get().start(minute * 60 * 1000);
+        if(minute == 1){
+            QuitTimer.get().start(minute * 6 * 1000);
+        }else QuitTimer.get().start(minute * 60 * 1000);
         if (minute > 0) {
+            if(minute ==1){
+                ToastUtils.show("设置成功，将于6秒后关闭");
+            }else
             ToastUtils.show(activity.getString(R.string.timer_set, String.valueOf(minute)));
         } else {
             ToastUtils.show(R.string.timer_cancel);

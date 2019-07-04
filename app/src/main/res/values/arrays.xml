@@ -24,7 +24,7 @@
 
     <string-array name="timer_text">
         <item>不开启</item>
-        <item>1分钟后（测试版）</item>
+        <item>6秒后（测试版）</item>
         <item>10分钟后</item>
         <item>20分钟后</item>
         <item>30分钟后</item>

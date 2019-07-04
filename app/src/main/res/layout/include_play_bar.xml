@@ -55,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
+            android:padding="3dp"
             android:src="@drawable/play_bar_btn_play_pause_selector" />
 
         <ImageView
@@ -62,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
+            android:padding="3dp"
             android:src="@drawable/ic_next_24dp" />
 
         <ImageView
@@ -69,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@null"
+            android:padding="3dp"
             android:src="@drawable/ic_playlist_24dp" />
     </LinearLayout>
 
