@@ -6,7 +6,8 @@
     android:orientation="horizontal"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:background="@color/grey_300">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -22,5 +23,6 @@
         android:layout_height="70dp"
         android:gravity="center_vertical"
         android:text="推荐歌曲"
-        android:textSize="30dp"/>
+        android:textStyle="bold"
+        android:textSize="20dp"/>
 </LinearLayout>

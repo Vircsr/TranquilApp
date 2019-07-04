@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * 启动画面Java bean
+ * Java bean
  *
  */
 public class Splash {

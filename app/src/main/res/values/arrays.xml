@@ -19,7 +19,6 @@
     </string-array>
 
     <string-array name="search_music_dialog_no_download">
-        <item>分享</item>
     </string-array>
 
     <string-array name="timer_text">
@@ -48,7 +47,7 @@
         <item>推荐排行榜</item>
         <item>百度热歌榜</item>
         <item>百度新歌榜</item>
-        <item>分类榜单</item>
+        <item>分类排行榜</item>
         <item>华语金曲榜</item>
         <item>欧美金曲榜</item>
         <item>影视金曲榜</item>
