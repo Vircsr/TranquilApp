@@ -19,7 +19,7 @@
     <color name="grey_300_96p">#F5E0E0E0</color>
     <color name="grey_900">#212121</color>
     <color name="grey_900_96p">#F5212121</color>
-
+    <color name="transparent">#00000000</color>
     <color name="half_transparent_black">#BB000000</color>
     <color name="black_33">#333333</color>
     <color name="line_and_outline_grey">#d9d9d9</color>

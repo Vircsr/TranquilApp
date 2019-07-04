@@ -28,9 +28,12 @@ public class NaviMenuExecutor {
             case R.id.action_timer:
                 timerDialog();
                 return true;
-            case R.id.action_clock:
-                //startActivity();
+            case R.id.action_sleep:
+                sleepModel();
                 return true;
+//            case R.id.action_clock:
+//                //startActivity();
+//                return true;
         }
         return false;
     }
@@ -60,5 +63,11 @@ public class NaviMenuExecutor {
         } else {
             ToastUtils.show(R.string.timer_cancel);
         }
+    }
+
+    private void sleepModel(){
+        QuitTimer.get().start(30*60*1000);
+        nightMode();
+        ToastUtils.show("睡眠模式开启");
     }
 }

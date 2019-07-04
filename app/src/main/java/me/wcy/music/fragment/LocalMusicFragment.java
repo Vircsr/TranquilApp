@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hwangjr.rxbus.RxBus;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -53,7 +54,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
     private ListView lvLocalMusic;
     @Bind(R.id.v_searching)
     private TextView vSearching;
-
+//    private View view;
     private Loader<Cursor> loader;
     private PlaylistAdapter adapter;
 
@@ -61,15 +62,20 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
             @Nullable Bundle savedInstanceState) {
-
+//    if(view !=null){
+//        ViewGroup parent = (ViewGroup) getView().getParent();
+//        if(parent != null){
+//            parent.removeView(view);
+//        }
+//        return view;
+//    }
+//    view = inflater.inflate(R.layout.fragment_local_music, container, false);
         return inflater.inflate(R.layout.fragment_local_music, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-
         adapter = new PlaylistAdapter(AppCache.get().getLocalMusicList());
         adapter.setOnMoreClickListener(this);
         lvLocalMusic.setAdapter(adapter);
@@ -99,6 +105,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
 
     private void initLoader() {
         loader = getActivity().getLoaderManager().initLoader(0, null, new MusicLoaderCallback(getContext(), value -> {
+            ToastUtils.show("本地播放列表初始化");
             AppCache.get().getLocalMusicList().clear();
             AppCache.get().getLocalMusicList().addAll(value);
             lvLocalMusic.setVisibility(View.VISIBLE);
@@ -109,6 +116,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
 
     @Subscribe(tags = { @Tag(RxBusTags.SCAN_MUSIC) })
     public void scanMusic(Object object) {
+        ToastUtils.show("接收消息");
         if (loader != null) {
             loader.forceLoad();
         }
@@ -188,32 +196,4 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
         });
     }
 
-
-    //    /**
-//     * 设置铃声
-//     */
-//    private void setRingtone(Music music) {
-//        Uri uri = MediaStore.Audio.Media.getContentUriForPath(music.getPath());
-//        // 查询音乐文件在媒体库是否存在
-//        Cursor cursor = getContext().getContentResolver()
-//                .query(uri, null, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() }, null);
-//        if (cursor == null) {
-//            return;
-//        }
-//        if (cursor.moveToFirst() && cursor.getCount() > 0) {
-//            String _id = cursor.getString(0);
-//            ContentValues values = new ContentValues();
-//            values.put(MediaStore.Audio.Media.IS_MUSIC, true);
-//            values.put(MediaStore.Audio.Media.IS_RINGTONE, true);
-//            values.put(MediaStore.Audio.Media.IS_ALARM, false);
-//            values.put(MediaStore.Audio.Media.IS_NOTIFICATION, false);
-//            values.put(MediaStore.Audio.Media.IS_PODCAST, false);
-//
-//            getContext().getContentResolver()
-//                    .update(uri, values, MediaStore.MediaColumns.DATA + "=?", new String[] { music.getPath() });
-//            Uri newUri = ContentUris.withAppendedId(uri, Long.valueOf(_id));
-//            RingtoneManager.setActualDefaultRingtoneUri(getContext(), RingtoneManager.TYPE_RINGTONE, newUri);
-//        }
-//        cursor.close();
-//    }
 }

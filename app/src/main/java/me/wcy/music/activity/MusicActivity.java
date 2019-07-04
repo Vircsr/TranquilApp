@@ -53,7 +53,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
     private ViewPager mViewPager;//左右滑动
     @Bind(R.id.fl_play_bar)
     private FrameLayout flPlayBar;//快捷播放
-
+    private View vNavigationHeader;
     private LocalMusicFragment mLocalMusicFragment;
     private SheetListFragment mSheetListFragment;//在线
     private ClockFragment clockFragment;
@@ -87,8 +87,8 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
 
     private void setupView() {
         // add navigation header
-//        vNavigationHeader = LayoutInflater.from(this).inflate(R.layout.navigation_header, navigationView, false);//天气
-//        navigationView.addHeaderView(vNavigationHeader);
+        vNavigationHeader = LayoutInflater.from(this).inflate(R.layout.nav_header, navigationView, false);//天气
+        navigationView.addHeaderView(vNavigationHeader);
 
         // setup view pager
         mLocalMusicFragment = new LocalMusicFragment();
@@ -99,6 +99,7 @@ public class MusicActivity extends BaseActivity implements View.OnClickListener,
         adapter.addFragment(mSheetListFragment);
         adapter.addFragment(clockFragment);
         mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(3);
         tvLocalMusic.setSelected(true);
 
         ivMenu.setOnClickListener(this);

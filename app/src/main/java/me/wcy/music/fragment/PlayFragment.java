@@ -100,7 +100,6 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
         initSystemBar();
         initViewPager();
         ilIndicator.create(mViewPagerContent.size());
@@ -128,10 +127,8 @@ public class PlayFragment extends BaseFragment implements View.OnClickListener,
         vpPlay.addOnPageChangeListener(this);
     }
 
-    /**
-     * 沉浸式状态栏
-     */
 
+//唱片页面中显示歌词和位置的地方
     private void initSystemBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             int top = ScreenUtils.getStatusBarHeight();

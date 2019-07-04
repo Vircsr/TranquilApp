@@ -38,8 +38,9 @@
     <string name="artist_info_empty">暂无歌手信息</string>
     <string name="search_tips">歌曲名、歌手名</string>
     <string name="search_empty">未找到相关结果</string>
-    <string name="menu_night">夜间模式</string>
-    <string name="menu_timer">定时停止播放</string>
+    <string name="menu_night">日/夜间模式</string>
+    <string name="menu_timer">休眠时间</string>
+    <string name="menu_sleep">睡眠模式</string>
     <string name="play">播放</string>
     <string name="sound_effect">音效调节</string>
     <string name="tips">温馨提示</string>
@@ -51,9 +52,6 @@
     <string name="weather_temp">%s°</string>
     <string name="timer_set">设置成功，将于%s分钟后关闭</string>
     <string name="timer_cancel">定时停止播放已取消</string>
-    <string name="share_app">夜深，享受音乐的安宁%s：http://fir.im/ponymusic</string>
-    <string name="copyright">Copyright © 2015&#045;%d SWUST</string>
-    <string name="about_project_url">https://github.com/wangchenyan/PonyMusic</string>
     <string name="music_info">歌曲信息</string>
     <string name="no_permission_storage">没有存储空间权限，无法扫描本地歌曲！</string>
     <string name="no_permission_setting">没有权限，无法设置铃声，请授予权限</string>

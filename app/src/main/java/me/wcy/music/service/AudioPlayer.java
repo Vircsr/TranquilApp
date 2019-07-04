@@ -21,7 +21,7 @@ import me.wcy.music.storage.preference.Preferences;
 import me.wcy.music.utils.ToastUtils;
 
 /**
- * Created by hzwangchenyan on 2018/1/26.
+ *
  */
 public class AudioPlayer {
     private static final int STATE_IDLE = 0;

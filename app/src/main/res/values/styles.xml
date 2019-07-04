@@ -44,4 +44,12 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0.4dp</item>
     </style>
+    <style name="Theme.Start" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--设置背景颜色-->
+        <item name="android:background">@drawable/itemicon</item>
+        <!-- 隐藏标题栏 -->
+        <item name="windowNoTitle">true</item>
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFullscreen">true</item>
+    </style>
 </resources>
