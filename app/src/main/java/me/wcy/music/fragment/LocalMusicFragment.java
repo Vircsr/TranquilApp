@@ -105,7 +105,7 @@ public class LocalMusicFragment extends BaseFragment implements AdapterView.OnIt
 
     private void initLoader() {
         loader = getActivity().getLoaderManager().initLoader(0, null, new MusicLoaderCallback(getContext(), value -> {
-            ToastUtils.show("本地播放列表初始化");
+//            ToastUtils.show("本地播放列表初始化");
             AppCache.get().getLocalMusicList().clear();
             AppCache.get().getLocalMusicList().addAll(value);
             lvLocalMusic.setVisibility(View.VISIBLE);
